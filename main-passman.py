@@ -16,7 +16,7 @@ def start(obj: DataManip):
         with open("db/masterpassword.json", 'r') as jsondata:
             jfile = json.load(jsondata)
 
-        stored_master_hash = jfile["masterpassword"] # load the saved hashed password
+        stored_master_hash = jfile["Master"] # load the saved hashed password
         master_password = getpass.getpass(colored("Enter Master Password: ", "green"))
 
         # compare the two hashes of input and stored master password
@@ -40,7 +40,7 @@ def start(obj: DataManip):
         except FileExistsError:
             pass
 
-        print(colored("You have to create a master password !! :) Be careful not to lose it as it is unrecoverable.", "purple"))
+        print(colored("You have to create a master password !! :) Be careful not to lose it as it is unrecoverable.", "magenta"))
         master_password = getpass.getpass("Create a master password: ")
         second_input = getpass.getpass("Verify your master pasword: ")
 
@@ -52,13 +52,13 @@ def start(obj: DataManip):
             with open("db/masterpassword.json", 'w') as jsondata:
                 json.dump(jfile, jsondata, sort_keys=True, indent=4)
             spinner.stop()
-            print(colored(f"{obj.checkmark_} Thank you! Restart the program and enter your master password to begin.", "purple"))
+            print(colored(f"{obj.checkmark_} Thank you! Restart the program and enter your master password to begin.", "magenta"))
         else:
             print(colored(f"{obj.x_mark_} Passwords do not match </3 Please try again", "red"))
             return start(obj)
         
 def exit_program():
-    print(colored("\nExiting Chloe's Password Manager... Goodbye ! :)\n", "purple"))
+    print(colored("\nExiting Chloe's Password Manager... Goodbye ! :)\n", "magenta"))
     sys.exit()
 
 
